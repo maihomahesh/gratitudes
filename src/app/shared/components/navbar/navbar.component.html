@@ -1,0 +1,33 @@
+<mat-toolbar color="primary">
+  <!-- <span>
+    <button mat-button routerLink="gratitudes">Gratitudes</button>
+  </span> -->
+  <span>
+    <button mat-button routerLink="new-gratitudes" routerLinkActive="active-link">
+      New Gratitudes
+    </button>
+  </span>
+  <span>
+    <button mat-button routerLink="archive" routerLinkActive="active-link">
+      Archive
+    </button>
+  </span>
+  <span class="nav-spacer"></span>
+  <span *ngIf="authService.photoURL">
+    <img [src]="authService.photoURL" alt="avatar" class="avatar" [matMenuTriggerFor]="menu">
+  </span>
+  <span *ngIf="!authService.photoURL">
+    <mat-icon class="avatar-icon material-icons md-48" [matMenuTriggerFor]="menu">account_circle</mat-icon>
+  </span>
+</mat-toolbar>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item disabled>
+    <mat-icon>settings</mat-icon>
+    <span>Settings</span>
+  </button>
+  <button mat-menu-item (click)="authService.signOut()">
+      <mat-icon>power_settings_new</mat-icon>
+      <span>Sign Out</span>
+    </button>
+</mat-menu>

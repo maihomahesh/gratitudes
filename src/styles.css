@@ -1,0 +1,173 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~font-awesome/css/font-awesome.css";
+
+html {
+    height: 100%;
+}
+body {
+    height: 100%;
+    /* background-color: #f5f5f5; */
+    background-color: #F8F9F9;
+    margin: 0;
+    scroll-behavior: smooth;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+}
+
+.mainContent {
+    margin: 10px 15px 0;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+.centeredParent {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.centeredParentVertical {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.centered {
+    margin: 0;
+}
+
+.leftFloat {
+    float: left;
+}
+
+.rightFloat {
+    float: right;
+}
+
+.leftAligned {
+    padding: 0 !important;
+    text-align: left !important;
+}
+
+.centeredText {
+    text-align: center;
+}
+
+div.card {
+    box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.2), 0 6px 3px 0 rgba(0, 0, 0, 0.19);
+    background-color:#EAECEE;
+}
+
+.card .form {
+    padding: 30px;
+}
+
+.gratitude {
+    padding: 0 !important;
+    margin: 10px 0;
+    align-items: left;
+    line-height: 1.4em;
+}
+
+.gratitude .head {
+    text-align: left;
+    font-size: 14px;
+    padding: 10px 10px 5px;
+    /* font-weight: bold; */
+}
+
+.gratitude .bottom {
+    text-align: left;
+    font-size: 11px;
+    padding: 5px 10px;
+    color: darkslategray;
+}
+
+.gratitude .serialNumber {
+    padding: 10px 15px 10px 10px;
+    background-color: slategray;
+    display: inline-block;
+}
+
+.gratitude .content {
+    padding: 10px;
+}
+
+.gratitude .actionButtons {
+    padding: 10px;
+}
+
+.gratitudes {
+    align-items: left;
+    padding: 0 !important;
+    margin: 10px 0;
+    line-height: 1.4em;
+}
+
+.gratitudes .head {
+    font-size: 16px;
+    color: #fff;
+    padding: 5px 10px;
+    background-color: #3F51B5;
+}
+
+.gratitudes .content {
+    padding: 5px 10px;
+    font-size: 14px;
+    position:relative !important;
+}
+
+.gratitudes .badge {
+    position: absolute !important;
+    top: -9px;
+    left: -12px;
+}
+
+.gratitude .badge {
+    position: absolute !important;
+    top: -19px;
+    left: -21px;
+}
+
+.actionButton {
+    margin-left: 5px;
+}
+
+.actionButton:hover {
+    cursor: pointer;
+}
+
+.formField {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.buttonBlock {
+    margin-bottom: 10px;
+}
+
+.myCard {
+    box-shadow: 0 4px 2px 0 rgba(0, 0, 0, 0.2);
+    border: 1px solid black;
+}
+
+.material-icons.md-14 { font-size: 14px; }
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+.testBorder {
+    border: 1px solid red;
+}

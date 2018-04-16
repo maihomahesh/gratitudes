@@ -1,0 +1,66 @@
+<form novalidate>
+  <mat-checkbox name="isShowBest" (change)="onShowBestChange()" [(ngModel)]="isShowBest">Show only the best gratitudes.</mat-checkbox>
+  <!-- <label>
+      <input type="checkbox" (change)="onShowBestChange($event)" [checked]="isShowBest">Show only the best gratitudes.
+  </label> -->
+  <button mat-raised-button (click)="toggleDateOrder()">
+    <mat-icon>{{isAscending ? 'arrow_upward' : 'arrow_downward' }}</mat-icon>
+    <!-- {{isAscending ? 'Asc' : 'Desc'}} -->
+    Date
+  </button>
+  <br>
+</form>
+
+<div *ngIf="isShowBest; then bestGratitudes else allGratitudes">
+
+</div>
+
+<ng-template #bestGratitudes>
+  <div *ngFor="let gratitude of gratitudes | async | orderBy: order: reverse">
+    <mat-card class="gratitude">
+      <div class="head">
+        {{ gratitude.gratitude }}
+      </div>
+      <div class="bottom">
+        <span class="centeredParentVertical">
+          <span>
+            <mat-icon color="warn">star</mat-icon>
+          </span>
+          <span style="margin-left:10px;">
+            {{gratitude.date | date: 'mediumDate'}}
+          </span>
+        </span>
+      </div>
+    </mat-card>
+  </div>
+</ng-template>
+
+<ng-template #allGratitudes>
+  <p>All Gratitudes</p>
+  <div *ngFor="let object of gratitudes | async | orderBy: order: reverse | groupBy: 'date'">
+    <mat-card class="gratitudes">
+      <div class="head">
+        <b>{{ object.key | date: 'fullDate'}}</b>
+      </div>
+      <div *ngFor="let gratitude of object.value">
+        <div class="content">
+          <div [class.bestGratitude]="gratitude.isTheBest">{{ gratitude.gratitude }}</div>
+          <mat-icon *ngIf="gratitude.isTheBest" class="badge" color="warn">star</mat-icon>
+          <!-- <span *ngIf="gratitude.isTheBest" class="badge">
+            <span>
+              <mat-icon color="warn">star</mat-icon>
+            </span>
+          </span> -->
+        </div>
+        <mat-divider></mat-divider>
+      </div>
+    </mat-card>
+    <!-- <div>
+      <b>{{ object.key | date: 'fullDate'}}</b>
+    </div>
+    <div *ngFor="let gratitude of object.value">
+      <div [class.bestGratitude]="gratitude.isTheBest">{{ gratitude.gratitude }} - {{ gratitude.createdAt | date: 'shortTime'}}</div>
+    </div>
+    <hr> -->
+  </div>
+</ng-template>

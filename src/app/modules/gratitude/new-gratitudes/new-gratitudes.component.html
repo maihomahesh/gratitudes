@@ -1,0 +1,62 @@
+<div class="wrapper" #AddGratitude>
+  <form [formGroup]="gratitudeForm" (ngSubmit)="addOrUpdateGratitude()" class="form">
+    <p class="topBlock">
+      Write all the good things that happened during this day. Be grateful for all of them. In the end, don't forget to choose
+      the best one.
+    </p>
+    <div class="formField">
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="date" (dateChange)="onChangeDateValue()">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <!-- <input type="date" id="gratitudeDate" formControlName="date" (change)="onChangeDateValue()"> -->
+      <span>{{ isDateToday ? 'Today' : '' }}</span>
+    </div>
+    <div class="formField">
+      <mat-form-field class="fullWidth">
+        <textarea matInput placeholder="A good thing..." formControlName="gratitude"></textarea>
+        <mat-error *ngIf="gratitudeControl.hasError('required')">This field is required.</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="itemBlock">
+      <mat-checkbox type="checkbox" formControlName="isTheBest">This is the best thing that happened.</mat-checkbox>
+    </div>
+    <div class="bottomBlock">
+      <button mat-raised-button color="primary" type="submit" [disabled]="gratitudeForm.invalid">Thank You</button>
+      <button mat-raised-button color="warn" type="button" (click)="isEdit ? cancelEdit() : resetForm()">{{ isEdit ? 'Cancel Edit' : 'Reset' }}</button>
+    </div>
+  </form>
+</div>
+<br>
+
+<!-- all the added gratitudes -->
+<div *ngFor="let gratitude of gratitudes | async; let i = index;">
+  <div class="gratitudeWrapper" [class.activeGratitude]="isBeingEdited(gratitude.id)">
+    <span class="favorite">
+      <button mat-icon-button (click)="gratitude.isTheBest ? gratitudeService.updateIsTheBestFieldValue(gratitude.id, false) : gratitudeService.markGratitudeAsBest(gratitude.userId, gratitude.id, gratitude.date);">
+        <mat-icon *ngIf="gratitude.isTheBest" color="warn">star</mat-icon>
+        <mat-icon *ngIf="!gratitude.isTheBest">star_border</mat-icon>
+      </button>
+    </span>
+
+    <span class="serialNumber">
+      {{totalGratitudes - i}}
+    </span>
+
+    <span class="contents">
+      <span class="content">
+        {{ gratitude.gratitude }}
+      </span>
+    </span>
+
+    <span class="actionBlock">
+      <button mat-icon-button (click)="editGratitude(gratitude, AddGratitude)" class="actionButton material-icons md-14" [disabled]="isEdit">
+        <mat-icon>mode_edit</mat-icon>
+      </button>
+      <button mat-icon-button (click)="openDeleteGratitudeDialog(gratitude.id, i)" color="warn" class="actionButton material-icons md-14" [disabled]="isEdit" #deleteButtonRef>
+        <mat-icon>delete</mat-icon>
+      </button>
+    </span>
+  </div>
+</div>

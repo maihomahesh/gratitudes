@@ -1,0 +1,105 @@
+<div *ngIf="isNewUser; then signUpForm else loginForm">
+
+</div>
+
+<ng-template #loginForm>
+
+    <form [formGroup]="userLoginForm" (ngSubmit)="login()" class="form">
+        <h1>Login</h1>
+        <mat-form-field class="formField">
+            <!-- <mat-icon matPrefix>account_circle &nbsp;</mat-icon> -->
+            <!-- <span matPrefix>+1 &nbsp;</span> -->
+            <input matInput type="email" formControlName="email" placeholder="Email address">
+            <mat-error *ngIf="loginFormErrors.email">
+                {{ loginFormErrors.email }}
+            </mat-error>
+        </mat-form-field>
+        <br>
+        <!-- <div *ngIf="email.errors && !email.pristine">
+            <div [hidden]="!email.errors.required">Email is required.</div>
+            <div [hidden]="!email.errors.email">Email is invalid.</div>
+        </div> -->
+        <mat-form-field class="formField">
+            <input matInput type="password" formControlName="password" placeholder="Password">
+            <mat-error *ngIf="loginFormErrors.password">
+                {{ loginFormErrors.password }}
+            </mat-error>
+        </mat-form-field>
+        <br>
+        <!-- <div *ngIf="password.errors && !password.pristine">
+            <div [hidden]="!password.errors.required">Password is required.</div>
+            <div *ngIf="password.errors.minlength">Password must be at least 6 characters long, we need another 
+                {{ password.errors.minlength.requiredLength - password.errors.minlength.actualLength }} characters.</div>
+        </div> -->
+        <div class="buttonBlock">
+            <button mat-raised-button color="primary" type="submit" [disabled]="userLoginForm.invalid" class="formField">Login</button>
+        </div>
+        <!-- <button mat-button color="primary" type="submit" [disabled]="userLoginForm.invalid">Login</button> -->
+        <div class="buttonBlock">
+            <button mat-raised-button color="accent" type="button" (click)="toggleForm()" class="formField">Register</button>
+        </div>
+
+        <div>
+            Forgot password?
+            <span>
+                <a (click)="resetPassword()">
+                    <strong>Reset here.</strong>
+                </a>
+            </span>
+        </div>
+        <br>
+        <div>
+            <button mat-fab (click)="authService.facebookLogin()" class="facebook leftFloat">
+                <!-- <mat-icon>favorite</mat-icon> -->
+                <fa [name]="'facebook'" [size]=2></fa>
+            </button>
+
+            <button mat-fab (click)="authService.googleLogin()" class="google">
+                    <fa [name]="'google-plus'" [size]=2></fa>
+            </button>
+
+            <button mat-fab (click)="authService.twitterLogin()" class="twitter rightFloat">
+                <span style="margin:5px;">
+                    <fa [name]="'twitter'" [size]=2></fa>
+                </span>
+            </button>
+        </div>
+    </form>
+</ng-template>
+
+<ng-template #signUpForm>
+    <form [formGroup]="userSignUpForm" (ngSubmit)="signUp()" class="form">
+        <div class="leftAligned">
+            <button mat-icon-button (click)="toggleForm()" class="leftAligned">
+                <fa [name]="'long-arrow-left'" [size]=1></fa>
+            </button>
+        </div>
+        <h1>Sign Up</h1>
+        <mat-form-field class="formField">
+            <input matInput type="email" formControlName="email" placeholder="Email">
+            <mat-error *ngIf="signUpFormErrors.email">
+                {{ signUpFormErrors.email }}
+            </mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="formField">
+            <input matInput type="password" formControlName="password" placeholder="Password" reverse="true">
+            <mat-error *ngIf="signUpFormErrors.password">
+                {{ signUpFormErrors.password }}
+            </mat-error>
+        </mat-form-field>
+        <br>
+
+        <mat-form-field class="formField">
+            <input matInput type="password" formControlName="confirmPassword" placeholder="Re-enter password" [errorStateMatcher]="matcher">
+            <mat-error *ngIf="signUpFormErrors.confirmPassword">
+                {{ signUpFormErrors.confirmPassword }}
+            </mat-error>
+        </mat-form-field>
+        <!-- <div style='color:#ff7355' *ngIf="userSignUpForm.errors?.mismatchedPasswords && userSignUpForm.get('password').dirty && userSignUpForm.get('confirmPassword').dirty">Passwords do not match. (C)</div> -->
+        <br>
+        <div class="buttonBlock">
+            <button mat-raised-button color="primary" type="submit" [disabled]="userSignUpForm.invalid">Sign up</button>
+        </div>
+    </form>
+</ng-template>

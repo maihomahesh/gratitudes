@@ -1,0 +1,96 @@
+.wrapper {
+    padding: 0;
+    margin: 0;
+    background-color: #f7f7f7;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5);   
+}
+
+.wrapper .form {
+    padding: 10px;
+}
+
+.fullWidthHeight {
+    width: 100%;
+    height: 100%;
+}
+
+.fullWidth {
+    width: 100%;
+}
+
+.fullHeight {
+    height: 100%;
+}
+
+.wrapper .form .formField {
+    display: block;
+    margin: 0;
+}
+
+.wrapper .form .itemBlock {
+    display: block;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+.wrapper .form .topBlock {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.wrapper .form .bottomBlock {
+    display: block;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.gratitudeWrapper {
+    padding: 0;
+    margin: 10px 0;
+    display: table;
+    position: relative;
+    width: 100%;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: #f7f7f7;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5);
+}
+
+.gratitudeWrapper .serialNumber {
+    display: table-cell;
+    width: 30px !important;
+    text-align: center;
+    vertical-align: middle;
+    padding: 5px;
+    background-color: slategray;
+}
+
+.gratitudeWrapper .contents {
+    background-color: #87CEEB;
+    display: table-cell;
+    padding: 5px;
+    vertical-align: middle;
+    line-height: 1.4em;
+    border-left: 3px solid #fdf5e6;
+    /* color: #fff; for currently being edited gratitude */
+}
+
+.gratitudeWrapper .favorite {
+    position: absolute;
+    left: -20px;
+    top: -18px;
+}
+
+.content {
+    display: block;
+}
+
+.gratitudeWrapper .actionBlock {
+    display: table-cell;
+    width: 40px;
+    vertical-align: middle;
+}
+
+.activeGratitude .contents {
+    color: #fff;
+}

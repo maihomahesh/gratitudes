@@ -1,0 +1,25 @@
+<!-- if there is no user, then show login/signup form component,
+  else show the landing page component, i.e., site.com/new-gratitudes,
+  this landing page component will have navbar component and menu's respective components -->
+
+<div *ngIf="authService.user | async; then authenticated else guest">
+
+</div>
+
+<ng-template #guest>
+  <div class="centeredParent">
+    <div class="centered card centeredText">
+      <app-login></app-login>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #authenticated>
+  <!-- here goes the navbar component and other router outlets -->
+  <app-navbar></app-navbar>
+  <div class="mainContent">
+    <router-outlet></router-outlet>
+  </div>
+</ng-template>
+
+<ng4-loading-spinner></ng4-loading-spinner>
