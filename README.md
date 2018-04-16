@@ -4,6 +4,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 This project is based on one of Rhonda Byrne's books. The idea is to make the user feel positive about their own life. Before going to bed every night, the user notes down all the good incidents that happened to him/her and be really grateful about that incident, among which s/he will choose one best incident. The goal again is to help the user know that there's a lot of positive things happening with him/her every day.
 
+[Live Demo](https://gratitudes-105dc.firebaseapp.com/)
+
 Note: Add your firebase configuration inside 'src/environments/environment.ts' file.
 
 Cheers.
